@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,14 +10,19 @@ export default function Header() {
       <div className="max-w-content mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <img
-              src="/RefineCV Logo.jpg"
-              alt="RefineCV"
-              className="h-12 w-auto"
-            />
+            <Link to="/">
+              <img
+                src="/RefineCV Logo.jpg"
+                alt="RefineCV"
+                className="h-12 w-auto cursor-pointer"
+              />
+            </Link>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/find-connections" className="text-dark hover:text-primary transition-colors font-normal">
+              Find Connections
+            </Link>
             <a href="#services" className="text-dark hover:text-primary transition-colors font-normal">
               Our Services
             </a>
@@ -47,6 +53,9 @@ export default function Header() {
 
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col space-y-4">
+            <Link to="/find-connections" className="text-dark hover:text-primary transition-colors">
+              Find Connections
+            </Link>
             <a href="#services" className="text-dark hover:text-primary transition-colors">
               Our Services
             </a>

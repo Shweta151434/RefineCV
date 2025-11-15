@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Benefits from './components/Benefits';
@@ -7,11 +8,12 @@ import BeforeAfter from './components/BeforeAfter';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import FindConnections from './pages/FindConnections';
+import CompanyConnections from './pages/CompanyConnections';
 
-function App() {
+function Landing() {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       <Hero />
       <Benefits />
       <HowItWorks />
@@ -21,6 +23,21 @@ function App() {
       <FAQ />
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/find-connections" element={<FindConnections />} />
+          <Route path="/company/:companyId" element={<CompanyConnections />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
